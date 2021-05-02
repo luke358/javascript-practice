@@ -1,0 +1,40 @@
+.preview_img{
+  width: 400px;
+  height: 400px;
+  position: relative;
+  /* overflow: hidden; */
+}
+.preview_img > img{
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+}
+.preview_img>.mask{
+  display: none;
+  top: 0;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  background-color: #fede4f;
+  opacity: .5;
+  border: 1px solid #ccc;
+  cursor:move;
+}
+.preview_img > .big {
+  display: none;
+  left: 410px;
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-color: red;
+  top: 0;
+  z-index: 999;
+  overflow: hidden;
+}
+.preview_img > .big>img{
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 800px;
+  height:800px;
+}
