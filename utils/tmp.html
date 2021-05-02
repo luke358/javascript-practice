@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./getStyle.js"></script>
+</head>
+<body>
+  <div class="box" style="width: 100px;height: 100px;"></div>
+  <button class="btn">属性获取</button>
+  <script>
+    let box1 = document.querySelector('.box')
+    let btn = document.querySelector('.btn')
+    btn.onclick = function(){
+      var width = getStyle(box1,'width')
+      alert(width)
+    }
+    var width = getStyle(box1,'width')
+    console.log(width)
+  </script>
+</body>
+</html>
