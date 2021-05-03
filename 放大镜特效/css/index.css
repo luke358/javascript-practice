@@ -22,8 +22,8 @@
 }
 .preview_img > .big {
   display: none;
-  left: 410px;
   position: absolute;
+  left: 410px;
   width: 400px;
   height: 400px;
   background-color: red;

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JSONP 实例</title>
+</head>
+<style>
+  #box{
+    height: 200px;
+    width: 200px;
+    border: 4px solid red;
+    overflow: auto;
+  }
+</style>
+<body>
+<div id="box">
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+  你好<br>
+</div>
+<script type="text/javascript">
+  let box = document.querySelector('#box')
+  console.log(box.scrollHeight)
+  console.log(box.clientHeight)
+  console.log(box.scrollTop)
+  box.addEventListener('scroll',function(){
+    if(box.scrollHeight - box.clientHeight<= Math.ceil(box.scrollTop)){
+      console.log('触底了')
+    }
+  })
+</script>
+</body>
+</html>
