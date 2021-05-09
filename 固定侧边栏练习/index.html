@@ -25,27 +25,37 @@
 			}
 			.main {
 				background-color: blue;
-				height: 900px;
+				height: 1300px;
 			}
 			.slide-bar {
 				position: absolute;
 				right: 0;
 				top: 800px;
-				width: 30px;
-				height: 80px;
-				background-color: black;
+				width: 50px;
+				height: 100px;
+				background-color: palegreen;
+			}
+			.goTop {
+				display: none;
+				position: absolute;
+				bottom: 0;
 			}
 		</style>
 	</head>
 	<body>
-		<div class="slide-bar"></div>
+		<div class="slide-bar">
+			<span class="goTop">返回顶部</span>
+		</div>
 		<div class="header w">头部区域</div>
 		<div class="banner w">baner区域</div>
 		<div class="main w">主题部分</div>
 		<script>
 			var slide = document.querySelector(".slide-bar");
 			var banner = document.querySelector(".banner");
+			var main = document.querySelector(".main");
+			var goTop = document.querySelector(".goTop");
 			var bannerTop = banner.offsetTop;
+			var mainTop = main.offsetTop;
 			var slideTop = slide.offsetTop - bannerTop;
 			// 页面滚动
 			document.addEventListener("scroll", function () {
@@ -57,7 +67,27 @@
 					slide.style.position = "absolute";
 					slide.style.top = "800px";
 				}
+				if (window.pageYOffset >= mainTop) {
+					goTop.style.display = "block";
+				} else {
+					goTop.style.display = "none";
+				}
 			});
+			goTop.addEventListener("click", function () {
+				animate(window, 0);
+			});
+			function animate(el, target, cb) {
+				el.timer && clearInterval(el.timer);
+				el.timer = setInterval(() => {
+					var step = (target - window.scrollY) / 10;
+					step = step > 0 ? Math.ceil(step) : Math.floor(step);
+					if (window.scrollY === target) {
+						clearInterval(el.timer);
+						cb && cb();
+					}
+					window.scroll(0, window.scrollY + step);
+				}, 15);
+			}
 		</script>
 	</body>
 </html>
