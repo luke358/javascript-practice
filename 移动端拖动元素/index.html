@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script>
+    var div = document.querySelector('div')
+    // 元素初始坐标
+    var x=0,y=0;
+    // 手指放上去的初始坐标
+    var startX=0,startY=0
+    div.addEventListener('touchstart',function(e){
+      startX = e.targetTouches[0].pageX
+      startY = e.targetTouches[0].pageY
+      x = this.offsetLeft
+      y = this.offsetTop
+    })
+    div.addEventListener('touchmove',function(e){
+      var moveX = e.targetTouches[0].pageX - startX
+      var moveY = e.targetTouches[0].pageY - startY
+      this.style.left = x + moveX + 'px'
+      this.style.top = y + moveY + 'px'
+    })
+  </script>
+</body>
+</html>
