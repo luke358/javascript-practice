@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.w {
+				width: 800px;
+				height: 200px;
+				margin: 0 auto;
+				text-align: center;
+				margin-bottom: 20px;
+			}
+			.header {
+				background-color: red;
+			}
+			.banner {
+				background-color: pink;
+			}
+			.main {
+				background-color: blue;
+				height: 900px;
+			}
+			.slide-bar {
+				position: absolute;
+				right: 0;
+				top: 800px;
+				width: 30px;
+				height: 80px;
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="slide-bar"></div>
+		<div class="header w">头部区域</div>
+		<div class="banner w">baner区域</div>
+		<div class="main w">主题部分</div>
+		<script>
+			var slide = document.querySelector(".slide-bar");
+			var banner = document.querySelector(".banner");
+			var bannerTop = banner.offsetTop;
+			var slideTop = slide.offsetTop - bannerTop;
+			// 页面滚动
+			document.addEventListener("scroll", function () {
+				// window.scrollY返回文档在垂直方向已滚动的像素值。
+				if (window.pageYOffset >= bannerTop) {
+					slide.style.position = "fixed";
+					slide.style.top = slideTop + "px";
+				} else {
+					slide.style.position = "absolute";
+					slide.style.top = "800px";
+				}
+			});
+		</script>
+	</body>
+</html>
