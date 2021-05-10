@@ -16,12 +16,13 @@ window.addEventListener("DOMContentLoaded", function () {
 	var dotLi = document.createDocumentFragment();
 	for (let index = 0; index < swiper.children.length; index++) {
 		var li = document.createElement("li");
+    li.remove
 		li.setAttribute("index", index);
 		dotLi.appendChild(li);
 	}
   // 初始高亮
   dotLi.children[0].className = 'current'
-  var dotChildren = dot.children
+  // var dotChildren = dot.children
 	dot.appendChild(dotLi);
 
   // 克隆第一张和最后一张
@@ -34,7 +35,8 @@ window.addEventListener("DOMContentLoaded", function () {
 		var index = e.target.getAttribute("index");
 		currentIndex = index;
 		animate(swiper, -swiperItemWidth * currentIndex);
-    highlightIndex(dotChildren,currentIndex)
+    // highlightIndex(dotChildren,currentIndex)
+    highlightIndex(dot,currentIndex)
 	});
 
 	// 左右按钮点击事件
@@ -45,7 +47,8 @@ window.addEventListener("DOMContentLoaded", function () {
     }
     currentIndex--;
 		animate(swiper, -swiperItemWidth * currentIndex);
-    highlightIndex(dotChildren,currentIndex)
+    // highlightIndex(dotChildren,currentIndex)
+    highlightIndex(dot,currentIndex)
 	});
 	arrowR.addEventListener("click", function () {
     if(currentIndex === swiper.children.length - 1){
@@ -54,15 +57,22 @@ window.addEventListener("DOMContentLoaded", function () {
     }
 		currentIndex++;
 		animate(swiper, -swiperItemWidth * currentIndex);
-    highlightIndex(dotChildren,currentIndex)
+    // highlightIndex(dotChildren,currentIndex)
+    highlightIndex(dot,currentIndex)
 	});
 });
 
 
-function highlightIndex(els,index){
+/* function highlightIndex(els,index){
   [...els].forEach(item => {
     item.getAttribute('index') == (index%els.length) ? item.className = "current" : item.className = "" 
   })
+} */
+
+// 使用classList
+function highlightIndex(el,index){
+  el.querySelector('.current').classList.remove('current')
+  el.children[index].classList.add('current')
 }
 
 function animate(el, target, cb) {
